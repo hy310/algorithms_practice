@@ -1,31 +1,31 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// ë°°ì—´ë¡œ ë¦¬ìŠ¤íŠ¸ êµ¬í˜„
+// ¹è¿­·Î ¸®½ºÆ® ±¸Çö
 #define SIZE 100
 
-// ë¦¬ìŠ¤íŠ¸ë¥¼ ë°°ì—´ë¡œ êµ¬í˜„í•˜ê¸° ë•Œë¬¸ì— array list ë¼ëŠ” ì´ë¦„ìœ¼ë¡œ ì •ì˜
+// ¸®½ºÆ®¸¦ ¹è¿­·Î ±¸ÇöÇÏ±â ¶§¹®¿¡ array list ¶ó´Â ÀÌ¸§À¸·Î Á¤ÀÇ
 typedef struct
 {
-    int V[SIZE];         // ë¦¬ìŠ¤íŠ¸ ì—­í• ì„ í•  ë°°ì—´ V
-    int n;               // ìš”ì†Œì˜ ê°œìˆ˜ë¥¼ ê¸°ì–µí•  ë³€ìˆ˜ n
-}ArrayList;              // ì´ êµ¬ì¡°ì²´ ì´ë¦„ì„ arraylist ë¼ê³  ì„ ì–¸í•¨
+    int V[SIZE];         // ¸®½ºÆ® ¿ªÇÒÀ» ÇÒ ¹è¿­ V
+    int n;               // ¿ä¼ÒÀÇ °³¼ö¸¦ ±â¾ïÇÒ º¯¼ö n
+}ArrayList;              // ÀÌ ±¸Á¶Ã¼ ÀÌ¸§À» arraylist ¶ó°í ¼±¾ğÇÔ
 
-// ì´ˆê¸°í™” í•¨ìˆ˜ ë§Œë“¤ê¸°
-void init(ArrayList *L)     // ì£¼ì†Œê°€ ë‚ ì•„ì˜¤ë‹ˆ í¬ì¸í„°ë³€ìˆ˜ Lë¡œ ë°›ê¸°
+// ÃÊ±âÈ­ ÇÔ¼ö ¸¸µé±â
+void init(ArrayList *L)     // ÁÖ¼Ò°¡ ³¯¾Æ¿À´Ï Æ÷ÀÎÅÍº¯¼ö L·Î ¹Ş±â
 {
-    L->n = 0;            // Lì˜ ì›ì†Œì˜ ê°œìˆ˜ëŠ” 0ê°œ
+    L->n = 0;            // LÀÇ ¿ø¼ÒÀÇ °³¼ö´Â 0°³
 }
 
-// traverse(ìˆœíšŒ) í•¨ìˆ˜ ë§Œë“¤ê¸°
-void traverse(ArrayList *L)    // ArrayList ì „ë‹¬í•´ì£¼ê³  ë°˜ë³µë¬¸ëŒë¦¬ê¸°
+// traverse(¼øÈ¸) ÇÔ¼ö ¸¸µé±â
+void traverse(ArrayList *L)    // ArrayList Àü´ŞÇØÁÖ°í ¹İº¹¹®µ¹¸®±â
 {
     for (int i=0; i < L->n; i++)
         printf("[%d] ", L->V[i]);
     printf("\n");
 }
 
-// add í•¨ìˆ˜ ë§Œë“¤ê¸°
+// add ÇÔ¼ö ¸¸µé±â
 void add(ArrayList *L, int pos, int item)
 {
     if (L->n == SIZE)
@@ -66,9 +66,9 @@ int remove1(ArrayList *L, int pos)
 
 void main()
 {
-    ArrayList list;      // main í•¨ìˆ˜ì—ì„œ ArrayList ë¥¼ ì‚¬ìš©í•˜ê¸° ìœ„í•´ êµ¬ì¡°ì²´ ë³€ìˆ˜ ì„ ì–¸í•˜ê¸°
+    ArrayList list;      // main ÇÔ¼ö¿¡¼­ ArrayList ¸¦ »ç¿ëÇÏ±â À§ÇØ ±¸Á¶Ã¼ º¯¼ö ¼±¾ğÇÏ±â
 
-    init(&list);          // init í•¨ìˆ˜ë¡œ ì´ˆê¸°í™”í•˜ê¸°. êµ¬ì¡°ì²´ í¬ì¸í„°ë¡œ ì „ë‹¬
+    init(&list);         // init ÇÔ¼ö·Î ÃÊ±âÈ­ÇÏ±â. ±¸Á¶Ã¼ Æ÷ÀÎÅÍ·Î Àü´Ş
     
     add(&list, 0, 10); traverse(&list);
     add(&list, 0, 20); traverse(&list);
