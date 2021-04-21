@@ -103,7 +103,7 @@ int findLastNode(int v, int n)
     pop();
     int i=1;
     
-    while(_Stack.top != -1)
+    while(!isEmpty())
     {
         bit = pop();
         if (bit == 0)
