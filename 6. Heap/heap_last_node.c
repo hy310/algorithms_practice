@@ -32,7 +32,7 @@ int isEmpty()
 
 int pop()
 {
-    if(_Stack.top == -1)
+    if(isEmpty())
     {
         printf("memory error!");
         exit(-1);
@@ -46,6 +46,12 @@ void push(int data)
 {
     _Stack.top += 1;
     _Stack.Arr[_Stack.top] = data;
+}
+
+// 현재 top 의 실제 값을 보기만 하는 함수 필요
+int peek()
+{
+    return _Stack.Arr[_Stack.top];
 }
 
 void init_Heap()
