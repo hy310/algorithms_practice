@@ -1,5 +1,6 @@
 #include <stdio.h> 
 
+// 삼항연산자 사용하기
 int main()
 {
     int num1 = 5;
