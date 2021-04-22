@@ -5,6 +5,10 @@
 #define TRUE 1
 #define FALSE 0
 
+// stack 의 top 을 맨 위에 있는 값으로 할지
+// stack 에 쌓인 index 값으로 할지 정확히 정의
+// 여기서는 top 은 stack 에 쌓인 index 값!
+
 typedef struct
 {
     int Arr[LEN];
@@ -49,16 +53,22 @@ void printstack(stack *A)
         printf("%d\n", A->Arr[i]);
 }
 
+// 현재 top 의 실제 값을 보기만 하는 함수 필요
+int peek(stack *A)
+{
+    return A->Arr[A->top];
+}
+
 void spans2(int X[], int S[], int n, stack *A)
 {
     for(int i = 0; i < n; i++)
     {
-        while((!isEmpty(A)) && (X[A->top] <= X[i]))
+        while((!isEmpty(A)) && (X[peek(A)] <= X[i]))
             pop(A);
         if(isEmpty(A))
             S[i] = i + 1;
         else   
-            S[i] = i - A->top;
+            S[i] = i - peek(A);
         push(A, i);
     }
     while(!isEmpty(A))
