@@ -22,6 +22,10 @@ int partition(int list[], int left, int right)
             high--;
         while(list[high] > pivot);
 
+        for(int i=0; i<MAX_SIZE; i++)
+            printf("[%d] ", list[i]);
+        printf("\nlow = %d, high = %d\n", low, high);
+
         if(low < high)
             SWAP(list[low], list[high], temp);
         
