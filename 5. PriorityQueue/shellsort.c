@@ -3,6 +3,7 @@
 #include <time.h>
 #include <Windows.h>
 
+
 void inc_insertion_sort(int list[], int first, int last, int gap)
 {
     int i, j, key;
