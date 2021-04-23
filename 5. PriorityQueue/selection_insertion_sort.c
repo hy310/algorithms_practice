@@ -53,7 +53,7 @@ void main()
     printf("\n\n"); getch();
 
 //    selection_sort(list, MAX_SIZE);
-    insertion_sort(list, MAX_SIZE);
+//    insertion_sort(list, MAX_SIZE);
     for(int i=0; i < MAX_SIZE; i++)
     {
         printf("%d ", list[i]);
