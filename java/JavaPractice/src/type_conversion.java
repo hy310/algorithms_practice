@@ -8,7 +8,7 @@ public class type_conversion {
 		byte b = 127;
 		int i = 100;
 		
-		System.out.println(b+i);   // 227. b 가 int 형으로 자동전환
+		System.out.println(b+i);   // 227. b 가 int형으로 자동전환
 		System.out.println(10/4);  // 2
 		System.out.println(10.0/4);  // 2.5   4 가 4.0으로 자동변환
 		System.out.println((char)0x12340041);   // A (강제전환해서) 문자로 대문자 A. 
