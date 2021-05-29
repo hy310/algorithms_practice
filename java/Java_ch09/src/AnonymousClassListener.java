@@ -13,7 +13,7 @@ public class AnonymousClassListener extends JFrame{
 		Container c = getContentPane();
 		c.setLayout(new FlowLayout());
 		JButton btn = new JButton("Action");
-//		btn.addActionListener(new MyActionListener);
+//		btn.addActionListener(new MyActionListener());
 		btn.addActionListener(new ActionListener() {
 			
 			@Override
