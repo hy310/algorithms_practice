@@ -1,21 +1,20 @@
 import java.awt.Container;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-public class MouseListenerEx extends JFrame{
+public class MouseAdapterEx extends JFrame{
 	
 	JLabel la = new JLabel("Hello");
 	
-	public MouseListenerEx() {
+	public MouseAdapterEx() {
 		
 		setTitle("Mouse Event Example");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		Container c = getContentPane();
-		c.addMouseListener(new MyMouseListener());
+		c.addMouseListener(new MyMouseAdapter());
 		
 		c.setLayout(null);
 		la.setSize(50, 20);
@@ -28,7 +27,7 @@ public class MouseListenerEx extends JFrame{
 	}
 	
 	// 마우스 어댑터를 통해 필요한 것만 사용하기
-	class MyMouseListener extends MouseAdapter {
+	class MyMouseAdapter extends MouseAdapter {
 		@Override
 		// 이렇게 pressed 하나만 사용가능
 		public void mousePressed(MouseEvent e) {
