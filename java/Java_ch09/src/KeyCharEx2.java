@@ -7,20 +7,21 @@ import java.awt.event.KeyEvent;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.text.JTextComponent;
 
 public class KeyCharEx2 extends JFrame {
 	
 	JLabel la = new JLabel("r=red y=yellow b=blue");
-	Container c = getContentPane();
 	
 	public KeyCharEx2() {
-		super("키보드 이벤트 예제 퀴즈 문제1");
+		
+		setTitle("키보드 이벤트 예제 퀴즈 문제1");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//		Container c = getContentPane();
+		Container c = getContentPane();
 		c.setLayout(new FlowLayout());
 		c.add(la);
-		c.addKeyListener(new MyKeyListener());
+
+		c.addKeyListener(new MyKeyListener(this));
+		// 이벤트 리스너 등록하며 객체 주소 함께 보내기
 		
 		c.setFocusable(true);
 		c.requestFocus();
@@ -36,24 +37,26 @@ public class KeyCharEx2 extends JFrame {
 }
 
 class MyKeyListener extends KeyAdapter {
+	
+	KeyCharEx2 superClass;  //부모 객체 담을 곳
+	
 	@Override
 	public void keyPressed(KeyEvent e) {
 		// TODO Auto-generated method stub
 		
 		Component c = (Component)e.getSource();
-		JLabel la2 = new JLabel();
-
+		
 		switch (e.getKeyChar()) {
 		case 'r':
-			la2.setText(la2.getText() + e.getKeyChar());		
+			superClass.la.setText("붉은색입니다");
 			c.setBackground(Color.RED);
 			break;
 		case 'b':
-//			la2.setText("파란색입니다");				
+			superClass.la.setText("파란색입니다");				
 			c.setBackground(Color.BLUE);
 			break;
 		case 'y':
-//			la2.setText("노란색입니다");				
+			superClass.la.setText("노란색입니다");				
 			c.setBackground(Color.YELLOW);
 			break;
 		case 'q':
@@ -64,9 +67,11 @@ class MyKeyListener extends KeyAdapter {
 		
 		super.keyPressed(e);
 	}
-
-	private void JTextComponent() {
-		// TODO Auto-generated method stub
-		
+	
+	MyKeyListener(KeyCharEx2 superClass)
+	{
+		this.superClass = superClass;    // 인자로 받은 부모 객체 전역변수 저장
 	}
+		
 }
+
