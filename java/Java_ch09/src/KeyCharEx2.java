@@ -7,6 +7,7 @@ import java.awt.event.KeyEvent;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.text.JTextComponent;
 
 public class KeyCharEx2 extends JFrame {
 	
@@ -16,7 +17,7 @@ public class KeyCharEx2 extends JFrame {
 	public KeyCharEx2() {
 		super("키보드 이벤트 예제 퀴즈 문제1");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		Container c = getContentPane();
+//		Container c = getContentPane();
 		c.setLayout(new FlowLayout());
 		c.add(la);
 		c.addKeyListener(new MyKeyListener());
@@ -39,21 +40,21 @@ class MyKeyListener extends KeyAdapter {
 	public void keyPressed(KeyEvent e) {
 		// TODO Auto-generated method stub
 		
-		JLabel l = (JLabel)e.getSource();
-		Component comp = (Component)e.getSource();
+		Component c = (Component)e.getSource();
+		JLabel la2 = new JLabel();
 
 		switch (e.getKeyChar()) {
 		case 'r':
-			l.setText("붉은색입니다");				
-			comp.setBackground(Color.RED);
+			la2.setText(la2.getText() + e.getKeyChar());		
+			c.setBackground(Color.RED);
 			break;
 		case 'b':
-			l.setText("파란색입니다");				
-			comp.setBackground(Color.BLUE);
+//			la2.setText("파란색입니다");				
+			c.setBackground(Color.BLUE);
 			break;
 		case 'y':
-			l.setText("노란색입니다");				
-			comp.setBackground(Color.YELLOW);
+//			la2.setText("노란색입니다");				
+			c.setBackground(Color.YELLOW);
 			break;
 		case 'q':
 			System.exit(0); 
@@ -62,5 +63,10 @@ class MyKeyListener extends KeyAdapter {
 		}
 		
 		super.keyPressed(e);
+	}
+
+	private void JTextComponent() {
+		// TODO Auto-generated method stub
+		
 	}
 }
