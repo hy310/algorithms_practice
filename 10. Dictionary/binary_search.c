@@ -61,6 +61,35 @@ void printDict(DictType* d)
     }
 }
 
+void insertion_sort(DictType* d)
+{
+    int i, j;
+    element item;
+    for (i=1; i<SIZE; i++)
+    {
+        item = d -> dict[i];
+        for (j=i-1; j>=0 && d -> dict[j].key > item.key; j--)
+            d->dict[j+1] = d->dict[j];
+        d->dict[j+1] = item;
+    }
+}
+
+int rFindElement(DictType* d, int key, int l, int r)
+{
+    int mid;
+    if (l <= r)
+    {
+        mid = (l+r) / 2;
+        if(key == d->dict[mid].key)
+            return mid;
+        else if (key < d->dict[mid].key)
+            return rFindElement(d, key, l, mid-1);
+        else
+            return rFindElement(d, key, mid+1, r);
+    }
+    return -1;
+}
+
 int main()
 {
     DictType d;
@@ -68,4 +97,25 @@ int main()
     srand(time(NULL));
     makeDict(&d);           // 순서 사전 만들기
     printDict(&d);
+    getchar();
+    printf("\n");
+    insertion_sort(&d);
+    printDict(&d);
+    getchar();
+
+    printf("\n검색할 키 값을 입력하세요 : ");
+    int key;
+    scanf_s("%d", &key);
+    int index = rFindElement(&d, key, 0, SIZE - 1);
+    if (index == -1)
+        printf("\n검색에 실패하였습니다.\n");
+    else
+    {
+        printf("\n위치 %d에서 키 %d 값 ", index+1, key);
+        for (int j=0; j<5; j++)
+            printf("%c", d.dict[index].value[j]);
+        printf("이 검색되었습니다.\n");
+    }
+
+    return 0;
 }
