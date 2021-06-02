@@ -49,6 +49,25 @@ void makeDict(DictType* d)
     insertValue(d);
 }
 
+element removeElement(DictType* d, int key)
+{
+    int index = findElement(d, key, 0, d->size-1);
+    if (index == -1)
+    {
+        printf("삭제할 요소가 없습니다.\n");
+        return;
+    }
+    else
+    {
+        element item = d->dict[index];
+        // 하나를 제거하니까 그 뒤에것들 다 한칸씩 앞으로
+        for (int i = index; i<d->size-1; i++)
+            d -> dict[i] = d->dict[i+1];
+        d->size--;
+        return item;
+    }
+}
+
 void printDict(DictType* d)
 {
     printf("key value \n ============================\n");
@@ -74,6 +93,7 @@ void insertion_sort(DictType* d)
     }
 }
 
+// 재귀적
 int rFindElement(DictType* d, int key, int l, int r)
 {
     int mid;
@@ -86,6 +106,23 @@ int rFindElement(DictType* d, int key, int l, int r)
             return rFindElement(d, key, l, mid-1);
         else
             return rFindElement(d, key, mid+1, r);
+    }
+    return -1;
+}
+
+// 반복문
+int findElement(DictType* d, int key, int l, int r)
+{
+    int mid;
+    while(l <= r)
+    {
+        mid = (l+r) / 2;
+        if (key == d->dict[mid].key)
+            return mid;
+        else if(key < d->dict[mid].key)
+            r = mid-1;
+        else
+            l = mid+1;
     }
     return -1;
 }
@@ -117,5 +154,9 @@ int main()
         printf("이 검색되었습니다.\n");
     }
 
+    printf("\n삭제할 키 값을 입력하세요. : ");
+    scanf_s("%d", &key);
+    removeElement(&d, key);
+    printDict(&d);
     return 0;
 }
