@@ -63,7 +63,9 @@ void insertItem(HashType* HT, int key)
     while(i < M)
     {
         count++;
-        int b = getNextBucketLinear(v, i);
+        //int b = getNextBucketQuadratic(v, i); // 이차조사법
+        //int b = getNextBucketDouble(v, i, key);  // 이중해싱법
+        int b = getNextBucketLinear(v, i);  // 선형조사법
         if(isEmpty(HT, b))
         {
             HT->A[b].key = key;
