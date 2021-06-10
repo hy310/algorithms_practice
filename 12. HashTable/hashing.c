@@ -77,6 +77,45 @@ void insertItem(HashType* HT, int key)
     }
 }
 
+int findElement(HashType* HT, int key)
+{
+    int v = h(key);
+    int i = 0;
+    while(i < M)
+    {
+        int b = getNextBucketLinear(v, i);  // 선형조사법
+        if(isEmpty(HT, b))
+            return 0;
+        else if (HT -> A[b].key == key)
+            return key;
+        else
+            i++;
+    }
+    return 0;
+}
+
+int removeElement(HashType* HT, int key)
+{
+    int v = h(key);
+    int i = 0;
+
+    while (i < M)
+    {
+        int b = getNextBucketLinear(v, i);
+        if (isEmpty(HT, b))
+            return 0;
+        else if (HT->A[b].key == key)  // 매칭되면 remove
+        {
+            HT->A[b].key = 0;  // 0 은 존재하지 않는 것이라고 하기
+            HT->A[b].probeCount = 0;
+            return key; 
+        }
+        else
+            i++;
+    }
+    return 0;
+}
+
 void printHashTable(HashType* HT)
 {
     printf("Bucket Key Probe\n");
@@ -101,6 +140,23 @@ int main()
     insertItem(&HT, 20);
     insertItem(&HT, 1);
     insertItem(&HT, 38);
+    printHashTable(&HT);
+
+    int key;
+    printf("\n탐색할 키 입력 : ");
+    scanf("%d", &key);
+    if (findElement(&HT, key))
+        printf("\n키 값 %d이(가) 존재합니다.\n", key);
+    else
+        printf("\n키 값 %d이(가) 없습니다.\n", key);
+
+    printf("\n삭제할 키 입력 : ");
+    scanf("%d", &key);
+    if (removeElement(&HT, key))
+        printf("\n키 값 %d이(가) 삭제되었습니다. \n", key);
+    else
+        printf("\n키 값 %d이(가) 없습니다.\n", key);
+    printf("\n");
     printHashTable(&HT);
 
     return 0;
